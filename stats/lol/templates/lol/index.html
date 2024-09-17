@@ -1,0 +1,44 @@
+{% extends "lol/layout.html" %}
+{% load static %}
+
+{% block title%}
+Stats
+{% endblock %}
+
+{% block body %}
+<form id="stats-form" class="row g-3 needs-validation" novalidate>
+    {% csrf_token %}
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Game Name</label>
+    <input type="text" class="form-control" id="validationCustom01" name="gameName" required >
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Game Tag</label>
+    <input type="text" class="form-control" id="validationCustom02" name="tag" required >
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit" id = "src_btn">Search</button>
+  </div>
+</form>
+
+<div id="load_anim">
+    <div class="dot dot-1"></div>
+    <div class="dot dot-2"></div>
+    <div class="dot dot-3"></div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
+      </filter>
+    </defs>
+  </svg>
+<div id = "result">
+
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'lol/index.js' %}"></script>
+{% endblock %}
